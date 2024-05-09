@@ -11,7 +11,13 @@ namespace Prueba.Controllers
     {
         public IActionResult get()
         {
-            return Ok("Hola mundo");
+            var context = HttpContext;
+            if (User.Identity != null)
+            {
+                return Ok("Hola " + User.Identity.Name);
+
+            }
+            return Ok("Hola a todos");
         }
     }
 }
